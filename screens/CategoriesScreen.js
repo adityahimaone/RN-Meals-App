@@ -4,13 +4,16 @@ import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
 
-function renderCategoryItem(itemData) {
-  return (
-    <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />
-  );
-}
-
 export default function CategoriesScreen() {
+  const renderCategoryItem = (itemData) => {
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+      />
+    );
+  };
+
   return (
     <FlatList
       data={CATEGORIES}
