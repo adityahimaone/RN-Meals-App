@@ -8,6 +8,7 @@ export default function CategoriesScreen() {
   const renderCategoryItem = (itemData) => {
     return (
       <CategoryGridTile
+        categoryId={itemData.item.id}
         title={itemData.item.title}
         color={itemData.item.color}
       />
