@@ -6,13 +6,7 @@ import CategoryGridTile from "../components/CategoryGridTile";
 
 export default function CategoriesScreen() {
   const renderCategoryItem = (itemData) => {
-    return (
-      <CategoryGridTile
-        categoryId={itemData.item.id}
-        title={itemData.item.title}
-        color={itemData.item.color}
-      />
-    );
+    return <CategoryGridTile items={itemData.item} />;
   };
 
   return (

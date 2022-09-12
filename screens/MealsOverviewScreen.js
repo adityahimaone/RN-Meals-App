@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import MealItem from "../components/MealItem";
 // import { useRoute } from "@react-navigation/native"; -> use this if component not a registered screen
 
-import { MEALS } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 
-export default function MealsOverviewScreen({ route }) {
+export default function MealsOverviewScreen({ route, navigation }) {
   //   const route = useRoute(); -> use this if component not a registered screen
 
   const categoryId = route.params.categoryId;
@@ -15,9 +15,20 @@ export default function MealsOverviewScreen({ route }) {
     (mealItem) => mealItem.categoryIds.indexOf(categoryId) >= 0
   );
 
+  //   get the category title
+  const categoryTitle = CATEGORIES.find(
+    (category) => category.id === categoryId
+  ).title;
+
   const renderMealItem = (itemData) => {
-    return <MealItem title={itemData.item.title} />;
+    return <MealItem items={itemData.item} />;
   };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: categoryTitle,
+    });
+  }, [categoryTitle]);
 
   return (
     <View style={styles.container}>

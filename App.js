@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import Colors from "./constants/colors";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 
@@ -23,33 +24,37 @@ const config = {
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="MealsCategories">
+        <Stack.Navigator
+          initialRouteName="MealsCategories"
+          screenOptions={{
+            headerStyle: { backgroundColor: Colors.secondary },
+            headerTintColor: "#fff",
+            headerTitleStyle: { fontWeight: "bold" },
+            contentStyle: { backgroundColor: Colors.tertiary },
+            transitionSpec: {
+              open: config,
+              close: config,
+            },
+          }}
+        >
           <Stack.Screen
             name="MealsCategories"
             component={CategoriesScreen}
             options={{
-              title: "Meals Categories",
-              headerStyle: { backgroundColor: "#f4511e" },
-              headerTintColor: "#fff",
-              headerTitleStyle: { fontWeight: "bold" },
-              transitionSpec: {
-                open: config,
-                close: config,
-              },
+              title: "All Categories",
             }}
           />
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen}
-            options={{
-              title: "Meals Overview",
-              transitionSpec: {
-                open: config,
-                close: config,
-              },
-            }}
+            // options={({ route, navigation }) => {
+            //   const categoryId = route.params.categoryId;
+            //   return {
+            //     title: categoryId,
+            //   };
+            // }}
           />
         </Stack.Navigator>
       </NavigationContainer>

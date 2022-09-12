@@ -2,7 +2,13 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function CategoryGridTile({ categoryId, title, color }) {
+import Shadow from "../constants/shadow";
+import Colors from "../constants/colors";
+
+export default function CategoryGridTile({ items }) {
+  // destructuring items
+  const { id: categoryId, title, color } = items;
+
   const navigation = useNavigation();
 
   const navigationHandler = () => {
@@ -35,15 +41,7 @@ const styles = StyleSheet.create({
     margin: 16,
     height: 150,
     borderRadius: 8,
-    elevation: 4,
-    // shadow ios
-    backgroundColor: "#fff",
-    shadowColor: "black",
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    // for ripple effect no overflow in android
-    overflow: Platform.select({ android: "hidden", default: "visible" }),
+    ...Shadow,
   },
   button: {
     flex: 1,
@@ -65,5 +63,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
+    color: Colors.primary,
   },
 });
