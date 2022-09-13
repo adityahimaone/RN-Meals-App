@@ -6,6 +6,8 @@ This is a React Native App that allows you to browse through different meals and
 
 - React Navigation (yarn add @react-navigation/native)
 - Drawer Navigation (yarn add @react-navigation/drawer)
+- React Context
+- React Redux
 
 ## Installation
 

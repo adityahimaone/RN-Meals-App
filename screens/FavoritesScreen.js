@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 
 import MealsList from "../components/MealsList/MealsList";
 import { FavoriteContext } from "../store/context/favorite-context";
@@ -7,11 +8,12 @@ import { MEALS } from "../data/dummy-data";
 import Colors from "../constants/colors";
 
 const FavoritesScreen = () => {
-  const favoriteMealsCtx = useContext(FavoriteContext);
+  // const favoriteMealsCtx = useContext(FavoriteContext);
+  const favoriteMealsIds = useSelector((state) => state.favoriteMeals.ids);
 
   //  get the favorite meals from the favorite meals context, includes is a method of the array object for checking if an array contains a value
   const listFavoriteMeals = MEALS.filter((mealItem) =>
-    favoriteMealsCtx.ids.includes(mealItem.id)
+    favoriteMealsIds.includes(mealItem.id)
   );
 
   if (listFavoriteMeals.length === 0 || !listFavoriteMeals) {
