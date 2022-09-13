@@ -15,15 +15,19 @@ import Colors from "../constants/colors";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
-import { FavoriteContext } from "../store/context/favorite-context";
+import { useDispatch, useSelector } from "react-redux";
+// import { FavoriteContext } from "../store/context/favorite-context";
+import { addFavorite, removeFavorite } from "../store/redux/favoritesSlice";
 
 export default function MealDetailScreen({ route, navigation }) {
-  const favoriteMealCtx = useContext(FavoriteContext);
+  // const favoriteMealCtx = useContext(FavoriteContext);
+  const dispatch = useDispatch();
+  const favoriteMealsIds = useSelector((state) => state.favoriteMeals.ids);
 
   const mealId = route.params.mealId;
 
   // includes is a method of the array object for checking if an array contains a value
-  const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
+  const mealIsFavorite = favoriteMealsIds.includes(mealId);
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   const {
@@ -44,9 +48,9 @@ export default function MealDetailScreen({ route, navigation }) {
 
   const changeStatusFavoriteMeal = () => {
     if (mealIsFavorite) {
-      favoriteMealCtx.removeFavorite(mealId);
+      dispatch(removeFavorite({ id: mealId }));
     } else {
-      favoriteMealCtx.addFavorite(mealId);
+      dispatch(addFavorite({ id: mealId }));
     }
   };
 
