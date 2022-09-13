@@ -6,7 +6,7 @@ import {
   ScrollView,
   Button,
 } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
@@ -15,9 +15,15 @@ import Colors from "../constants/colors";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
+import { FavoriteContext } from "../store/context/favorite-context";
 
 export default function MealDetailScreen({ route, navigation }) {
+  const favoriteMealCtx = useContext(FavoriteContext);
+
   const mealId = route.params.mealId;
+
+  // includes is a method of the array object for checking if an array contains a value
+  const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   const {
@@ -36,19 +42,25 @@ export default function MealDetailScreen({ route, navigation }) {
     affordability,
   };
 
-  const headerButtonHandler = () => {};
+  const changeStatusFavoriteMeal = () => {
+    if (mealIsFavorite) {
+      favoriteMealCtx.removeFavorite(mealId);
+    } else {
+      favoriteMealCtx.addFavorite(mealId);
+    }
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <IconButton
-          icon="md-star"
+          icon={mealIsFavorite ? "md-bookmark" : "md-bookmark-outline"}
           color="white"
-          onPress={headerButtonHandler}
+          onPress={changeStatusFavoriteMeal}
         />
       ),
     });
-  }, [navigation, headerButtonHandler]);
+  }, [navigation, changeStatusFavoriteMeal]);
 
   return (
     <ScrollView style={styles.rootContainer}>

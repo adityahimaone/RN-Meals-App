@@ -1,17 +1,10 @@
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Platform,
-} from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import Shadow from "../constants/shadow";
-import Colors from "../constants/colors";
-import MealDetails from "./MealDetails";
+import Shadow from "../../constants/shadow";
+import Colors from "../../constants/colors";
+import MealDetails from "../MealDetails";
 
 export default function MealItem({ items }) {
   // destructuring items
