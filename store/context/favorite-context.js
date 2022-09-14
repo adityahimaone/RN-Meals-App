@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const FavoriteContext = createContext({
   ids: [],
@@ -23,11 +23,7 @@ const FavoriteContextProvider = ({ children }) => {
     removeFavorite,
   };
 
-  return (
-    <FavoriteContext.Provider value={value}>
-      {children}
-    </FavoriteContext.Provider>
-  );
+  return <FavoriteContext.Provider value={value}>{children}</FavoriteContext.Provider>;
 };
 
 export default FavoriteContextProvider;

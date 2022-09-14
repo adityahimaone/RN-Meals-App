@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-import Colors from "../../constants/colors";
+import Colors from '../../constants/colors';
 
 export default function Subtitle({ children }) {
   return (
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   subtitle: {
     color: Colors.primary,
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   subtitleContainer: {
     marginVertical: 4,

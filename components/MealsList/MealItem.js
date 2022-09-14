@@ -1,10 +1,10 @@
-import { Pressable, StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-import Shadow from "../../constants/shadow";
-import Colors from "../../constants/colors";
-import MealDetails from "../MealDetails";
+import Shadow from '../../constants/shadow';
+import Colors from '../../constants/colors';
+import MealDetails from '../MealDetails';
 
 export default function MealItem({ items }) {
   // destructuring items
@@ -13,7 +13,7 @@ export default function MealItem({ items }) {
   const navigation = useNavigation();
 
   const selectMealItemHandler = () => {
-    navigation.navigate("MealDetail", {
+    navigation.navigate('MealDetail', {
       mealId: id,
     });
   };
@@ -52,22 +52,22 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     borderRadius: 8,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   buttonRippleAndroid: {
-    color: "#ccc",
+    color: '#ccc',
   },
   // ios
   buttonPressed: {
     opacity: 0.5,
   },
   image: {
-    width: "100%",
+    width: '100%',
     height: 200,
   },
   title: {
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize: 18,
     margin: 8,
   },

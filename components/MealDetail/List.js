@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
 export default function List({ data }) {
   return (
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
-    textAlign: "justify",
+    textAlign: 'justify',
   },
 });

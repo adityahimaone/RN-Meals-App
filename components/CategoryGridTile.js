@@ -1,9 +1,9 @@
-import React from "react";
-import { Pressable, StyleSheet, Text, View, Platform } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { Pressable, StyleSheet, Text, View, Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import Shadow from "../constants/shadow";
-import Colors from "../constants/colors";
+import Shadow from '../constants/shadow';
+import Colors from '../constants/colors';
 
 export default function CategoryGridTile({ items }) {
   // destructuring items
@@ -12,7 +12,7 @@ export default function CategoryGridTile({ items }) {
   const navigation = useNavigation();
 
   const navigationHandler = () => {
-    navigation.navigate("MealsOverview", {
+    navigation.navigate('MealsOverview', {
       categoryId: categoryId,
     });
   };
@@ -21,10 +21,7 @@ export default function CategoryGridTile({ items }) {
     <View style={styles.gridItem}>
       <Pressable
         android_ripple={styles.buttonRippleAndroid}
-        style={({ pressed }) => [
-          styles.button,
-          pressed && styles.buttonPressed,
-        ]}
+        style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
         onPress={navigationHandler}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
@@ -47,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonRippleAndroid: {
-    color: "#ccc",
+    color: '#ccc',
   },
   // ios
   buttonPressed: {
@@ -57,11 +54,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 18,
     color: Colors.primary,
   },

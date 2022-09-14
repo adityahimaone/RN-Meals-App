@@ -1,23 +1,16 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Button,
-} from "react-native";
-import React, { useContext, useLayoutEffect } from "react";
+import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
+import React, { useContext, useLayoutEffect } from 'react';
 
-import { MEALS } from "../data/dummy-data";
-import MealDetails from "../components/MealDetails";
-import Shadow from "../constants/shadow";
-import Colors from "../constants/colors";
-import Subtitle from "../components/MealDetail/Subtitle";
-import List from "../components/MealDetail/List";
-import IconButton from "../components/IconButton";
-import { useDispatch, useSelector } from "react-redux";
+import { MEALS } from '../data/dummy-data';
+import MealDetails from '../components/MealDetails';
+import Shadow from '../constants/shadow';
+import Colors from '../constants/colors';
+import Subtitle from '../components/MealDetail/Subtitle';
+import List from '../components/MealDetail/List';
+import IconButton from '../components/IconButton';
+import { useDispatch, useSelector } from 'react-redux';
 // import { FavoriteContext } from "../store/context/favorite-context";
-import { addFavorite, removeFavorite } from "../store/redux/favoritesSlice";
+import { addFavorite, removeFavorite } from '../store/redux/favoritesSlice';
 
 export default function MealDetailScreen({ route, navigation }) {
   // const favoriteMealCtx = useContext(FavoriteContext);
@@ -30,15 +23,7 @@ export default function MealDetailScreen({ route, navigation }) {
   const mealIsFavorite = favoriteMealsIds.includes(mealId);
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-  const {
-    title,
-    imageUrl,
-    duration,
-    complexity,
-    affordability,
-    ingredients,
-    steps,
-  } = selectedMeal;
+  const { title, imageUrl, duration, complexity, affordability, ingredients, steps } = selectedMeal;
 
   const detailsProps = {
     duration,
@@ -58,7 +43,7 @@ export default function MealDetailScreen({ route, navigation }) {
     navigation.setOptions({
       headerRight: () => (
         <IconButton
-          icon={mealIsFavorite ? "md-bookmark" : "md-bookmark-outline"}
+          icon={mealIsFavorite ? 'md-bookmark' : 'md-bookmark-outline'}
           color="white"
           onPress={changeStatusFavoriteMeal}
         />
@@ -73,10 +58,7 @@ export default function MealDetailScreen({ route, navigation }) {
         <View>
           <Text style={styles.title}>{title}</Text>
           <View>
-            <MealDetails
-              detailsItem={detailsProps}
-              textStyle={styles.textMealDetails}
-            />
+            <MealDetails detailsItem={detailsProps} textStyle={styles.textMealDetails} />
           </View>
         </View>
         <View style={styles.contentContainer}>
@@ -95,7 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   image: {
-    width: "100%",
+    width: '100%',
     height: 300,
   },
   wrapContentContainer: {
@@ -107,10 +89,10 @@ const styles = StyleSheet.create({
     ...Shadow,
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 24,
     margin: 8,
-    textAlign: "center",
+    textAlign: 'center',
   },
   textMealDetails: {
     padding: 5,
